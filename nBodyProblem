@@ -1,0 +1,81 @@
+/* Program Description Note: All equal weight and massless
+
+COMPLETE Step 1: We start with the 4 square coordinate points
+COMPLETE Step 2: We generate a random point (with intitial velocity 0) within a region larger than the square
+Step 3: We calculate the centroid of the convex hull
+Step 4: We assign (albeit arbitrary for now) a starting velocity pointing toward the centroid
+Step 5: We find and record the straight segments between the points
+Step 6: We use the segment to find the distance and use the gravitational constant
+
+Step 7- X: We need to have a time step to find the orbital energy -> eccentricy -> kepler orbit and then have a way of fixing error over time. 
+Step X + 1: Record the distance preserving constants for hyberbolic cosine into a mySQL database
+
+Note: Since all the particles have the exact same weight we should see mainly elliptical kepler orbits. My math professor tole be that the paramatric plot may be computationally faster then the cartesion.
+
+Note: Particles may never stick since 1/r^2 is indeterminate for r = 0, but they may be come a waste for calculation purposes and we can force them to stick by an if statement (for no numerical heating).
+Also, the particles may jut out at an almost infinite rate or they may swing around and put energy on just one particle and then the high energy escapes the system.
+*/
+
+#include <iostream>
+#include <cmath>
+#include <fstream>
+#include <vector>
+#include <iomanip>
+#include <stdlib.h> // rand() function
+#include <random>
+#include <ctime>
+
+using namespace std;
+
+			int main()
+
+			{
+				//Used to calculate the centroid
+				xSum = 0;
+				ySum = 0;
+
+				double const numOfPoints = 5;
+
+
+				//First four points
+				double firstPoint[2] = {0 , 0};
+				double secondPoint[2] = {1 , 0};
+				double thirdPoint[2] = {0 , 1};
+				double fourthPoint[2] = {1 , 1};
+				
+				//Calculates random point
+				double randomFifthPoint[2] = {};
+
+				srand(time(NULL));
+
+					for(int i = 0; i <= 1; i++)
+					{
+					randomFifthPoint[i] = rand()%11;
+					}
+				
+			
+				cout << " This is the random point: { "; 
+			
+				for(int i = 0; i <= 1; i++)
+				{
+					cout << randomFifthPoint[i];
+					if( i % 2 == 0)
+					{
+						cout << " , ";
+					}
+
+					else
+					{
+						cout << " } " << endl;
+					}
+				}
+			//
+			
+			//Calculates the centroid
+				/* Pseudocode, find the mean of the x Values and the mean of the y Values. Then output "The centroid (center of mass) is { : << xMean << " , " << yMean << " } " << endl;
+			
+			
+			
+				cin.get();
+			}
+
